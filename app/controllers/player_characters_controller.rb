@@ -1,11 +1,12 @@
-class PlayerCharacterController < ApplicationController
+class PlayerCharactersController < ApplicationController
 
   def index
     @player_characters = PlayerCharacter.all
   end
 
   def show
-    @player_character = PlayerCharacter.find(:id)
+    render "test"
+    # @player_character = PlayerCharacter.find(:id)
   end
 
   def new
