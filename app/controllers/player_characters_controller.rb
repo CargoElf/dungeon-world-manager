@@ -5,8 +5,7 @@ class PlayerCharactersController < ApplicationController
   end
 
   def show
-    render "test"
-    # @player_character = PlayerCharacter.find(:id)
+    @player_character = PlayerCharacter.find(params[:id])
   end
 
   def new
