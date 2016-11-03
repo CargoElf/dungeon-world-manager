@@ -1,0 +1,7 @@
+<ul>
+<% @player_characters.each do |pc| %>
+  <li>
+  <%= link_to "#{pc.name}", player_character_path(pc) %>
+  </li>
+<% end %>
+</ul>
