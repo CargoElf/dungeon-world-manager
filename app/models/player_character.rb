@@ -28,6 +28,15 @@ class PlayerCharacter < ApplicationRecord
   private
 
   def mod(attribute)
-    attribute
+    case attribute
+    when 1, 2, 3 then -3
+    when 4, 5 then -2
+    when 6, 7, 8 then -1
+    when 9, 10, 11, 12 then 0
+    when 13, 14, 15 then 1
+    when 16, 17 then 2
+    when 18 then 3
+    end
   end
+
 end
