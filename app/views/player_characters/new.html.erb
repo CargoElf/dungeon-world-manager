@@ -1,5 +1,25 @@
+<%= render 'shared/errors', active_object: @errors %>
 <%= form_for @player_character do |f| %>
-  <%= render "shared/errors", object: @player_character %>
-  <%= f.text_field :field_1, class: "form-control" %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name, placeholder: "Character Name", label: "Name", class: "form-control" %>
 
+  <%= f.label "STR" %>
+  <%= f.select :strength, @attribute_array %>
+
+  <%= f.label "DEX" %>
+  <%= f.select :dexterity, @attribute_array %>
+
+  <%= f.label "CON" %>
+  <%= f.select :constitution, @attribute_array %>
+
+  <%= f.label "INT" %>
+  <%= f.select :intelligence, @attribute_array %>
+
+  <%= f.label "WIS" %>
+  <%= f.select :wisdom, @attribute_array %>
+
+  <%= f.label "CHA" %>
+  <%= f.select :charisma, @attribute_array %>
+
+  <%= f.submit %>
 <% end %>
