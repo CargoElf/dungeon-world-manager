@@ -7,17 +7,17 @@ RSpec.describe PlayerCharacter, type: :model do
   describe "Ability Scores" do
     it "Gives error if over 18" do
       pc.strength = 19
-      expect{raise pc.save!}.to raise_error(ActiveRecord::RecordInvalid)
+      expect{pc.save!}.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it "Gives error if under 1" do
       pc.strength = 0
-      expect{raise pc.save!}.to raise_error(ActiveRecord::RecordInvalid)
+      expect{pc.save!}.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it "Gives error is total scores too high" do
       pc.strength = 17
-      expect{raise pc.save!}.to raise_error(ActiveRecord::RecordInvalid)
+      expect{pc.save!}.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 

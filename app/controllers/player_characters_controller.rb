@@ -10,10 +10,18 @@ class PlayerCharactersController < ApplicationController
 
   def new
     @player_character = PlayerCharacter.new
+    @attribute_array = [16,15,13,12,9,8]
   end
 
   def create
     @player_character = PlayerCharacter.new(player_character_params)
+    if @player_character.save
+      redirect_to @player_character
+    else
+      @attribute_array = [16,15,13,12,9,8]
+      p @errors = @player_character
+      render "new"
+    end
   end
 
   def edit
@@ -26,7 +34,7 @@ class PlayerCharactersController < ApplicationController
   private
 
   def player_character_params
-    params.require(:pc).permit(:name, :level, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma)
+    params.require(:player_character).permit(:name, :level, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma)
   end
 
 end
