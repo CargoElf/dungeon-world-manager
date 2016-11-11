@@ -9,4 +9,6 @@ class CharacterClass < ApplicationRecord
   has_many :races, through: :class_races
   has_many :starting_items
   has_many :items, through: :starting_items
+
+  
 end
