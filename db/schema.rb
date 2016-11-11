@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20161111152603) do
     t.index ["race_id"], name: "index_class_races_on_race_id", using: :btree
   end
 
-  create_table "gears", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
@@ -109,13 +109,13 @@ ActiveRecord::Schema.define(version: 20161111152603) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "starting_gears", force: :cascade do |t|
+  create_table "starting_items", force: :cascade do |t|
     t.integer  "character_class_id"
-    t.integer  "gear_id"
+    t.integer  "item_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["character_class_id"], name: "index_starting_gears_on_character_class_id", using: :btree
-    t.index ["gear_id"], name: "index_starting_gears_on_gear_id", using: :btree
+    t.index ["character_class_id"], name: "index_starting_items_on_character_class_id", using: :btree
+    t.index ["item_id"], name: "index_starting_items_on_item_id", using: :btree
   end
 
   add_foreign_key "class_alignments", "alignments"
@@ -126,6 +126,6 @@ ActiveRecord::Schema.define(version: 20161111152603) do
   add_foreign_key "class_moves", "moves"
   add_foreign_key "class_races", "character_classes"
   add_foreign_key "class_races", "races"
-  add_foreign_key "starting_gears", "character_classes"
-  add_foreign_key "starting_gears", "gears"
+  add_foreign_key "starting_items", "character_classes"
+  add_foreign_key "starting_items", "items"
 end
