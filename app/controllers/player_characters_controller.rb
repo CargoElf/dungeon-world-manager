@@ -19,7 +19,7 @@ class PlayerCharactersController < ApplicationController
       redirect_to @player_character
     else
       @attribute_array = [16,15,13,12,9,8]
-      p @errors = @player_character
+      @errors = @player_character
       render "new"
     end
   end

@@ -1,25 +1,68 @@
 <%= render 'shared/errors', active_object: @errors %>
-<%= form_for @player_character do |f| %>
-  <%= f.label "Name" %>
-  <%= f.text_field :name, placeholder: "Character Name", label: "Name", class: "form-control" %>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <%= form_for @player_character do |f| %>
+        <div class="row">
+          <div class="col s12">
+            <%= f.label "Name" %>
+            <div class="input-field inline">
+              <%= f.text_field :name, placeholder: "Character Name", class: "form-control" %>
+            </div>
 
-  <%= f.label "STR" %>
-  <%= f.select :strength, @attribute_array %>
+          </div>
 
-  <%= f.label "DEX" %>
-  <%= f.select :dexterity, @attribute_array %>
+        </div>
 
-  <%= f.label "CON" %>
-  <%= f.select :constitution, @attribute_array %>
+        <div class="row">
+          <div class="co s1">
 
-  <%= f.label "INT" %>
-  <%= f.select :intelligence, @attribute_array %>
+          </div>
+        </div>
 
-  <%= f.label "WIS" %>
-  <%= f.select :wisdom, @attribute_array %>
+        <div class="row">
+          <div class="col s1">
+            <%= f.label "STR" %>
+            <div class="input-field inline">
+              <%= f.select :strength, @attribute_array %>
+            </div>
+          </div>
+          <div class="col s1">
+            <%= f.label "DEX" %>
+            <div class="input-field">
+              <%= f.select :dexterity, @attribute_array %>
+            </div>
+          </div>
+        </div>
 
-  <%= f.label "CHA" %>
-  <%= f.select :charisma, @attribute_array %>
+        <div class="row">
+        </div>
 
-  <%= f.submit %>
-<% end %>
+        <%= f.label "CON" %>
+        <div class="input-field">
+          <%= f.select :constitution, @attribute_array %>
+        </div>
+
+        <%= f.label "INT" %>
+        <div class="input-field">
+          <%= f.select :intelligence, @attribute_array %>
+        </div>
+
+        <%= f.label "WIS" %>
+        <div class="input-field">
+          <%= f.select :wisdom, @attribute_array %>
+        </div>
+
+        <%= f.label "CHA" %>
+        <div class="input-field">
+          <%= f.select :charisma, @attribute_array %>
+        </div>
+
+        <%= f.submit %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
