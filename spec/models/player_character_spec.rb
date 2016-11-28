@@ -4,8 +4,6 @@ RSpec.describe PlayerCharacter, type: :model do
   include ModelHelper
   let(:pc) { PlayerCharacter.new(name: "John", strength: 16, dexterity: 15, constitution: 13, intelligence: 12, wisdom: 9, charisma: 8) }
 
-  pc.character_class
-
   describe "Ability Scores" do
     it "Gives error if over 18" do
       pc.strength = 19
