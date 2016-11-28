@@ -16,22 +16,26 @@ ActiveRecord::Schema.define(version: 20161111152603) do
   enable_extension "plpgsql"
 
   create_table "alignments", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
+    t.string   "name",        null: false
+    t.string   "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "bonds", force: :cascade do |t|
-    t.string   "description"
+    t.string   "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "character_classes", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                            null: false
+    t.integer  "hp_mod",              default: 4
+    t.integer  "exp_points",          default: 0
+    t.integer  "player_character_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["player_character_id"], name: "index_character_classes_on_player_character_id", using: :btree
   end
 
   create_table "class_alignments", force: :cascade do |t|
@@ -72,21 +76,21 @@ ActiveRecord::Schema.define(version: 20161111152603) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
+    t.string   "name",        null: false
+    t.string   "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "moves", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
+    t.string   "name",        null: false
+    t.string   "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "player_characters", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                       null: false
     t.string   "description"
     t.integer  "level",          default: 1
     t.integer  "strength",       default: 1
@@ -103,8 +107,8 @@ ActiveRecord::Schema.define(version: 20161111152603) do
   end
 
   create_table "races", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
+    t.string   "name",        null: false
+    t.string   "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -118,6 +122,7 @@ ActiveRecord::Schema.define(version: 20161111152603) do
     t.index ["item_id"], name: "index_starting_items_on_item_id", using: :btree
   end
 
+  add_foreign_key "character_classes", "player_characters"
   add_foreign_key "class_alignments", "alignments"
   add_foreign_key "class_alignments", "character_classes"
   add_foreign_key "class_bonds", "bonds"

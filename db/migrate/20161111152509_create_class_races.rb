@@ -4,7 +4,7 @@ class CreateClassRaces < ActiveRecord::Migration[5.0]
       t.references :character_class, foreign_key: true
       t.references :race, foreign_key: true
 
-      t.timestamps
+      t.timestamps(null: false)
     end
   end
 end

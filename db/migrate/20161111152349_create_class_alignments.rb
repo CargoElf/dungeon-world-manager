@@ -4,7 +4,7 @@ class CreateClassAlignments < ActiveRecord::Migration[5.0]
       t.references :character_class, foreign_key: true
       t.references :alignment, foreign_key: true
 
-      t.timestamps
+      t.timestamps(null: false)
     end
   end
 end
