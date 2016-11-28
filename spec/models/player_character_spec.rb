@@ -57,7 +57,13 @@ RSpec.describe PlayerCharacter, type: :model do
   end
 
   describe "Hit Points" do
-    it "Adds class and constitution together"
+    it "Adds class and constitution together" do
+
+    end
+  end
+
+  describe "load" do
+
   end
 
 end
