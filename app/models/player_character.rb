@@ -31,6 +31,13 @@ class PlayerCharacter < ApplicationRecord
     mod(self.charisma)
   end
 
+  def hit_points
+    self.constitution
+  end
+
+  def load
+  end
+
   private
 
   def mod(attribute)
