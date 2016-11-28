@@ -37,4 +37,8 @@ class PlayerCharactersController < ApplicationController
     params.require(:player_character).permit(:name, :level, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma)
   end
 
+  def class_params
+    params.require
+  end
+
 end

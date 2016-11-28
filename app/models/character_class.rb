@@ -1,4 +1,5 @@
 class CharacterClass < ApplicationRecord
+  belongs_to :player_character
   has_many :class_alignments
   has_many :alignments, through: :class_alignments
   has_many :class_bonds
@@ -10,5 +11,5 @@ class CharacterClass < ApplicationRecord
   has_many :starting_items
   has_many :items, through: :starting_items
 
-  
+
 end

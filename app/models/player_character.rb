@@ -1,4 +1,6 @@
 class PlayerCharacter < ApplicationRecord
+  has_one :character_class
+
   validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
 
   validates_each :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma do |player_character, attr, value|
