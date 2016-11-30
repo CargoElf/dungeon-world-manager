@@ -1,5 +1,5 @@
 class PlayerCharacter < ApplicationRecord
-  has_one :character_class
+  has_one :character_class, dependent: :delete_all
 
   validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
 
@@ -58,5 +58,18 @@ class PlayerCharacter < ApplicationRecord
     total_score = self.strength + self.dexterity + self.constitution + self.intelligence + self.wisdom + self.charisma
     self.errors.add(:ability_score, "should equal #{72 + self.level}") if total_score > 72 + self.level
   end
+
+  # t.string   "name",                       null: false
+  # t.string   "description"
+  # t.integer  "level",          default: 1
+  # t.integer  "strength",       default: 1
+  # t.integer  "dexterity",      default: 1
+  # t.integer  "constitution",   default: 1
+  # t.integer  "intelligence",   default: 1
+  # t.integer  "wisdom",         default: 1
+  # t.integer  "charisma",       default: 1
+  # t.text     "inventory"
+  # t.integer  "player_id"
+  # t.integer  "game_master_id"
 
 end
