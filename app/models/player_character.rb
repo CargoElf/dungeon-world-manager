@@ -1,5 +1,13 @@
 class PlayerCharacter < ApplicationRecord
-  has_one :character_class, dependent: :delete
+  belongs_to :race
+  belongs_to :alignment
+
+  has_many :starting_items
+  has_many :items, through: :starting_items
+  has_many :class_moves
+  has_many :moves, through: :class_moves
+  has_many :class_bonds
+  has_many :bonds, through: :class_bonds
 
   validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
 
