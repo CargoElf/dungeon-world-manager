@@ -5,6 +5,14 @@ RSpec.describe PlayerCharacter, type: :model do
   let(:pc) { PlayerCharacter.new(name: "John", strength: 16, dexterity: 15, constitution: 13, intelligence: 12, wisdom: 9, charisma: 8) }
 
   describe "Ability Scores" do
+    it "Has readable ability scores" do
+      expect([pc.strength, pc.dexterity, pc.constitution, pc.intelligence, pc.wisdom, pc.charisma]).to eq [16,15,13,12,9,8]
+    end
+
+    it "Has writable ability scores" do
+      expect([pc.strength = 1, pc.dexterity = 1, pc.constitution = 1, pc.intelligence = 1, pc.wisdom = 1, pc.charisma = 1]).to eq [1,1,1,1,1,1]  
+    end
+
     it "Gives error if over 18" do
       pc.strength = 19
       expect{pc.save!}.to raise_error(ActiveRecord::RecordInvalid)

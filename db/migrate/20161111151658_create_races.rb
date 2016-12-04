@@ -1,10 +1,10 @@
 class CreateRaces < ActiveRecord::Migration[5.0]
   def change
     create_table :races do |t|
-      t.string :name
-      t.string :description
+      t.string :name, null: false
+      t.string :description, null: false
 
-      t.timestamps
+      t.timestamps(null: false)
     end
   end
 end

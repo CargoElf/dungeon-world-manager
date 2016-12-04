@@ -1,3 +1,3 @@
 class Alignment < ApplicationRecord
-  has_many :class_alignments
+  has_many :player_characters
 end

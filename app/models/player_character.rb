@@ -1,7 +1,18 @@
 class PlayerCharacter < ApplicationRecord
+  belongs_to :race
+  belongs_to :alignment
+
+  has_many :starting_items
+  has_many :items, through: :starting_items
+  has_many :class_moves
+  has_many :moves, through: :class_moves
+  has_many :class_bonds
+  has_many :bonds, through: :class_bonds
+
   validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
 
   validates_each :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma do |player_character, attr, value|
+    value = 0 if value == nil
     player_character.errors.add(attr, 'must be more than 0 and less then 19') if value > 18 || value < 1
   end
 
@@ -53,8 +64,26 @@ class PlayerCharacter < ApplicationRecord
   end
 
   def total_ability_score
-    total_score = self.strength + self.dexterity + self.constitution + self.intelligence + self.wisdom + self.charisma
+    total_score = check_nil("strength") + check_nil("dexterity") + check_nil("constitution") + check_nil("intelligence") + check_nil("wisdom") + check_nil("charisma")
     self.errors.add(:ability_score, "should equal #{72 + self.level}") if total_score > 72 + self.level
   end
+
+  def check_nil(ability)
+    self.send("#{ability}=", 0) if self.send(ability) == nil
+    self.send(ability)
+  end
+
+  # t.string   "name",                       null: false
+  # t.string   "description"
+  # t.integer  "level",          default: 1
+  # t.integer  "strength",       default: 1
+  # t.integer  "dexterity",      default: 1
+  # t.integer  "constitution",   default: 1
+  # t.integer  "intelligence",   default: 1
+  # t.integer  "wisdom",         default: 1
+  # t.integer  "charisma",       default: 1
+  # t.text     "inventory"
+  # t.integer  "player_id"
+  # t.integer  "game_master_id"
 
 end
