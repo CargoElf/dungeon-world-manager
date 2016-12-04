@@ -10,7 +10,7 @@ class PlayerCharactersController < ApplicationController
 
   def new
     @player_character = PlayerCharacter.new
-    @attribute_array = [16,15,13,12,9,8]
+    @attribute_array = [16,15,13,12,9,8,nil]
   end
 
   def create
@@ -18,7 +18,7 @@ class PlayerCharactersController < ApplicationController
     if @player_character.save
       redirect_to @player_character
     else
-      @attribute_array = [16,15,13,12,9,8]
+      @attribute_array = [16,15,13,12,9,8,nil]
       @errors = @player_character
       render "new"
     end
