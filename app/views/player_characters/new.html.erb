@@ -16,50 +16,44 @@
         </div>
 
         <div class="row">
-          <div class="col s1">
 
-          </div>
-        </div>
-
-        <div class="row">
           <div class="col s1">
             <%= f.label "STR" %>
-            <div class="input-field inline">
-              <%= f.select :strength, @attribute_array %>
-            </div>
+            <%= f.number_field :strength, in: 1..18, step: 1, value: 10 %>
           </div>
+
           <div class="col s1">
             <%= f.label "DEX" %>
-            <div class="input-field">
-              <%= f.select :dexterity, @attribute_array %>
-            </div>
+            <%= f.number_field :dexterity, in: 1..18, step: 1, value: 10 %>
           </div>
+
+          <div class="col s1">
+            <%= f.label "CON" %>
+            <%= f.number_field :constitution, in: 1..18, step: 1, value: 10 %>
+          </div>
+
         </div>
 
         <div class="row">
+
+          <div class="col s1">
+            <%= f.label "INT" %>
+            <%= f.number_field :intelligence, in: 1..18, step: 1, value: 10 %>
+          </div>
+
+          <div class="col s1">
+            <%= f.label "WIS" %>
+            <%= f.number_field :wisdom, in: 1..18, step: 1, value: 10 %>
+          </div>
+
+          <div class="col s1">
+            <%= f.label "CHA" %>
+            <%= f.number_field :charisma, in: 1..18, step: 1, value: 10 %>
+          </div>
+
         </div>
 
-        <%= f.label "CON" %>
-        <div class="input-field">
-          <%= f.select :constitution, @attribute_array %>
-        </div>
-
-        <%= f.label "INT" %>
-        <div class="input-field">
-          <%= f.select :intelligence, @attribute_array %>
-        </div>
-
-        <%= f.label "WIS" %>
-        <div class="input-field">
-          <%= f.select :wisdom, @attribute_array %>
-        </div>
-
-        <%= f.label "CHA" %>
-        <div class="input-field">
-          <%= f.select :charisma, @attribute_array %>
-        </div>
-
-        <%= f.submit %>
+        <%= f.submit "Create Character" %>
         <% end %>
 
       </div>
