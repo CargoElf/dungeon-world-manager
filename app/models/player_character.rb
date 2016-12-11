@@ -16,7 +16,7 @@ class PlayerCharacter < ApplicationRecord
     player_character.errors.add(attr, 'must be more than 0 and less then 19') if value > 18 || value < 1
   end
 
-  validate :total_ability_score
+  # validate :total_ability_score
 
   def str_mod
     mod(self.strength)
@@ -63,10 +63,10 @@ class PlayerCharacter < ApplicationRecord
     end
   end
 
-  def total_ability_score
-    total_score = check_nil("strength") + check_nil("dexterity") + check_nil("constitution") + check_nil("intelligence") + check_nil("wisdom") + check_nil("charisma")
-    self.errors.add(:ability_score, "should equal #{72 + self.level}") if total_score > 72 + self.level
-  end
+  # def total_ability_score
+  #   total_score = check_nil("strength") + check_nil("dexterity") + check_nil("constitution") + check_nil("intelligence") + check_nil("wisdom") + check_nil("charisma")
+  #   self.errors.add(:ability_score, "should equal #{72 + self.level}") if total_score > 72 + self.level
+  # end
 
   def check_nil(ability)
     self.send("#{ability}=", 0) if self.send(ability) == nil

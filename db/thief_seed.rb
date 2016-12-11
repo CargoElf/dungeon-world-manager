@@ -1,8 +1,8 @@
-thief_pc_seed = {
-  description:"You’ve heard them, sitting around the campfire. Bragging about this battle or that. About how their gods are smiling on your merry band. You count your coins and smile to yourself—this is the thrill above all. You alone know the secret of Dungeon World—filthy filthy lucre.\nSure, they give you lip for all the times you’ve snuck off alone but without you, who among them wouldn’t have been dissected by a flying guillotine or poisoned straight to death by some ancient needle trap? So, let them complain. When you’re done with all this delving you’ll toast their hero’s graves.\nFrom your castle. Full of gold. You rogue.",
-  race: [{name: "Human", description: "You are a professional. When you spout lore or discern realities about criminal activities, take +1."},{name: "Halfling", description: "When you attack with a ranged weapon, deal +2 damage."}],
-  hp_mod:
-}
+# thief_pc_seed = {
+#   description:"You’ve heard them, sitting around the campfire. Bragging about this battle or that. About how their gods are smiling on your merry band. You count your coins and smile to yourself—this is the thrill above all. You alone know the secret of Dungeon World—filthy filthy lucre.\nSure, they give you lip for all the times you’ve snuck off alone but without you, who among them wouldn’t have been dissected by a flying guillotine or poisoned straight to death by some ancient needle trap? So, let them complain. When you’re done with all this delving you’ll toast their hero’s graves.\nFrom your castle. Full of gold. You rogue.",
+#   race: [{name: "Human", description: "You are a professional. When you spout lore or discern realities about criminal activities, take +1."},{name: "Halfling", description: "When you attack with a ranged weapon, deal +2 damage."}],
+#   hp_mod: 6
+# }
 
 # Names'
 # Halfling: Felix, Rook, Mouse, Sketch, Trixie, Robin, Omar, Brynn, Bug
