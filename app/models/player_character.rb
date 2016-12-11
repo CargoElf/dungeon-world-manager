@@ -9,6 +9,8 @@ class PlayerCharacter < ApplicationRecord
   has_many :class_bonds
   has_many :bonds, through: :class_bonds
 
+  accepts_nested_attributes_for :items, :moves, :race, :alignment, :bonds, allow_destroy: true
+
   validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
 
   validates_each :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma do |player_character, attr, value|
