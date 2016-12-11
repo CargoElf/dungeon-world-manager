@@ -5,7 +5,7 @@ class PlayerCharactersController < ApplicationController
   end
 
   def show
-    @player_character = PlayerCharacter.find(params[:id])
+    @player_character = PlayerCharacter.includes(:alignment, :race).where(id: params[:id]).first
   end
 
   def new
