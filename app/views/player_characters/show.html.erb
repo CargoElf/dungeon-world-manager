@@ -17,3 +17,14 @@
 <%= @player_character.race.description %>
 <%= @player_character.alignment.name %>
 <%= @player_character.alignment.description %>
+
+<% @player_character.moves.each do |move| %>
+  <ul>
+    <li>
+      <b><%= move.name %></b>
+    </li>
+    <li>
+      <%= move.description %>
+    </li>
+  </ul>
+<% end %>
