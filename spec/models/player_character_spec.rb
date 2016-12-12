@@ -10,7 +10,7 @@ RSpec.describe PlayerCharacter, type: :model do
     end
 
     it "Has writable ability scores" do
-      expect([pc.strength = 1, pc.dexterity = 1, pc.constitution = 1, pc.intelligence = 1, pc.wisdom = 1, pc.charisma = 1]).to eq [1,1,1,1,1,1]  
+      expect([pc.strength = 1, pc.dexterity = 1, pc.constitution = 1, pc.intelligence = 1, pc.wisdom = 1, pc.charisma = 1]).to eq [1,1,1,1,1,1]
     end
 
     it "Gives error if over 18" do
@@ -66,7 +66,8 @@ RSpec.describe PlayerCharacter, type: :model do
 
   describe "Hit Points" do
     it "Adds class and constitution together" do
-
+      pc.constitution = 10
+      expect(pc.hit_points).to eq 14
     end
   end
 
