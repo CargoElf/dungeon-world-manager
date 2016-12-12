@@ -5,12 +5,14 @@ class PlayerCharactersController < ApplicationController
   end
 
   def show
-    @player_character = PlayerCharacter.includes(:alignment, :race).where(id: params[:id]).first
+    @player_character = PlayerCharacter.includes(:alignment, :race, :moves, :bonds).where(id: params[:id]).first
   end
 
   def new
+    p "Ding!"
     @player_character = PlayerCharacter.new
-    @attribute_array = [16,15,13,12,9,8,nil]
+    @race = @player_character.build_race
+    @alignment = @player_character.build_alignment
   end
 
   def create
@@ -18,14 +20,13 @@ class PlayerCharactersController < ApplicationController
     if @player_character.save
       redirect_to @player_character
     else
-      @attribute_array = [16,15,13,12,9,8,nil]
       @errors = @player_character
       render "new"
     end
   end
 
   def edit
-    @player_character = PlayerCharacter.find(:id)
+    @player_character = PlayerCharacter.includes(:alignment, :race, :moves, :bonds).where(id: params[:id]).first
   end
 
   def update
@@ -34,11 +35,7 @@ class PlayerCharactersController < ApplicationController
   private
 
   def player_character_params
-    params.require(:player_character).permit(:name, :level, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma)
-  end
-
-  def class_params
-    params.require
+    params.require(:player_character).permit(:name, :class, :level, :class_name, :hp_mod, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, race_attributes: [:name, :description], alignment_attributes: [:name, :description])
   end
 
 end

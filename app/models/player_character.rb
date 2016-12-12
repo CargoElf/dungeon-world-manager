@@ -9,14 +9,16 @@ class PlayerCharacter < ApplicationRecord
   has_many :class_bonds
   has_many :bonds, through: :class_bonds
 
-  validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
+  accepts_nested_attributes_for :items, :moves, :race, :alignment, :bonds, allow_destroy: true
+
+  validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :class_name
 
   validates_each :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma do |player_character, attr, value|
     value = 0 if value == nil
     player_character.errors.add(attr, 'must be more than 0 and less then 19') if value > 18 || value < 1
   end
 
-  validate :total_ability_score
+  # validate :total_ability_score
 
   def str_mod
     mod(self.strength)
@@ -63,10 +65,10 @@ class PlayerCharacter < ApplicationRecord
     end
   end
 
-  def total_ability_score
-    total_score = check_nil("strength") + check_nil("dexterity") + check_nil("constitution") + check_nil("intelligence") + check_nil("wisdom") + check_nil("charisma")
-    self.errors.add(:ability_score, "should equal #{72 + self.level}") if total_score > 72 + self.level
-  end
+  # def total_ability_score
+  #   total_score = check_nil("strength") + check_nil("dexterity") + check_nil("constitution") + check_nil("intelligence") + check_nil("wisdom") + check_nil("charisma")
+  #   self.errors.add(:ability_score, "should equal #{72 + self.level}") if total_score > 72 + self.level
+  # end
 
   def check_nil(ability)
     self.send("#{ability}=", 0) if self.send(ability) == nil
