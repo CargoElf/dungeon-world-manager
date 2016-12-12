@@ -12,7 +12,7 @@
             </div>
           </div>
           <%= f.label "Class"%>
-          <%= f.text_field :class_name %>
+          <%= f.text_field :class_name, placeholder: "Class Name" %>
 
 
           <%= f.label "HP Modifier" %>
@@ -60,9 +60,9 @@
         <div class="row">
           <%= f.fields_for :race do |t| %>
             <%= t.label "Race" %>
-            <%= t.text_field :name %>
+            <%= t.text_field :name, placeholder: "Race Name" %>
             <%= t.label "Description" %>
-            <%= t.text_area :description, class: "form-control"%>
+            <%= t.text_area :description, placeholder: "Race Description", class: "form-control"%>
           <% end %>
 
         </div>
@@ -70,9 +70,9 @@
         <div class="row">
           <%= f.fields_for :alignment do |t| %>
             <%= t.label "Alignment" %>
-            <%= t.text_field :name %>
+            <%= t.text_field :name, placeholder: "Alignment Name" %>
             <%= t.label "Description" %>
-            <%= t.text_area :description, class: "form-control"%>
+            <%= t.text_area :description, placeholder: "Alignment Description", class: "form-control"%>
           <% end %>
 
         </div>

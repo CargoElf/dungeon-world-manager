@@ -11,7 +11,7 @@ class PlayerCharacter < ApplicationRecord
 
   accepts_nested_attributes_for :items, :moves, :race, :alignment, :bonds, allow_destroy: true
 
-  validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
+  validates_presence_of :name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :class_name
 
   validates_each :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma do |player_character, attr, value|
     value = 0 if value == nil

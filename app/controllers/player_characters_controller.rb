@@ -9,6 +9,7 @@ class PlayerCharactersController < ApplicationController
   end
 
   def new
+    p "Ding!"
     @player_character = PlayerCharacter.new
     @race = @player_character.build_race
     @alignment = @player_character.build_alignment
@@ -34,7 +35,7 @@ class PlayerCharactersController < ApplicationController
   private
 
   def player_character_params
-    params.require(:player_character).permit(:name, :class_name, :level, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, race_attributes: [:name, :description], alignment_attributes: [:name, :description])
+    params.require(:player_character).permit(:name, :class, :level, :class_name, :hp_mod, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, race_attributes: [:name, :description], alignment_attributes: [:name, :description])
   end
 
 end
