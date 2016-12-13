@@ -49,6 +49,7 @@ class PlayerCharacter < ApplicationRecord
   end
 
   def load
+    self.load_mod + self.strength
   end
 
   private
