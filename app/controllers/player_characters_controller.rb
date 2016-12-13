@@ -42,7 +42,7 @@ class PlayerCharactersController < ApplicationController
   def add_moves
     if params[:moves]
       params[:moves].each do |number, data|
-        @player_character.moves << Move.new(name: data[:name], description: data[:description])
+        @player_character.moves << Move.new(name: data[:name], description: data[:description]) unless data[:description] == "" || data[:name] == ""
       end
     end
   end
@@ -50,7 +50,7 @@ class PlayerCharactersController < ApplicationController
   def add_bonds
     if params[:bonds]
       params[:bonds].each do |number, data|
-        @player_character.bonds << Bond.new(description: data[:description])
+        @player_character.bonds << Bond.new(description: data[:description]) unless data[:description] == ""
       end
     end
   end
