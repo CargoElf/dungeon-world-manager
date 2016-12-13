@@ -8,7 +8,7 @@ $(document).ready(function() {
 function add_move() {
     var num = 2
     $(".moves-button").on("click", function () {
-      $(".moves-input").append("<input type=\"text\" name=\"moves[" + num + "][name]\" placeholder=\"Description Name\" class=\"moves-name\"><textarea name=\"moves[" + num + "][description]\" placeholder=\"Description of Move\" class=\"moves-description\"></textarea>");
+      $(".moves-input").append("<input type=\"text\" name=\"moves[" + num + "][name]\" placeholder=\"Description Name\" class=\"moves-name\"><textarea name=\"moves[" + num + "][description]\" placeholder=\"Description of Move\" class=\"moves-description form-control\"></textarea>");
       num++
     })
 }
@@ -16,7 +16,7 @@ function add_move() {
 function add_bond() {
     var num = 2
     $(".bonds-button").on("click", function () {
-      $(".bonds-input").append("<textarea name=\"bonds[" + num + "][description]\" placeholder=\"Description of Bond\" class=\"bond-description col s12\"></textarea>");
+      $(".bonds-input").append("<textarea name=\"bonds[" + num + "][description]\" placeholder=\"Description of Bond\" class=\"bond-description form-control\"></textarea>");
       num++
     })
 }
