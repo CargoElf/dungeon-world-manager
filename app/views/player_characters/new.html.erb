@@ -109,7 +109,9 @@
             <div class="bonds-input">
               <% if params[:bonds] && params[:bonds][:"1"][:description] != "" %>
                 <% params[:bonds].each do |bond, description| %>
-                  <textarea name=<%= "bonds[#{bond}][description]" %> class="bond-description form-control"><%= "#{description[:description]}" %></textarea>
+                  <% if description[:description] != "" %>
+                    <textarea name=<%= "bonds[#{bond}][description]" %> class="bond-description form-control"><%= "#{description[:description]}" %></textarea>
+                  <% end %>
                 <% end %>
               <% else %>
                 <textarea name="bonds[1][description]" placeholder="Description of Bond" class="bond-description  form-control"></textarea>
