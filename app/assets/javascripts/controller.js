@@ -16,7 +16,7 @@ function add_move() {
 function add_bond() {
     var num = 2
     $(".bonds-button").on("click", function () {
-      $(".bonds-input").append("<textarea name=\"bond[" + num + "][description]\" placeholder=\"Description of Bond\" class=\"bond-description col s12\"></textarea>");
+      $(".bonds-input").append("<textarea name=\"bonds[" + num + "][description]\" placeholder=\"Description of Bond\" class=\"bond-description col s12\"></textarea>");
       num++
     })
 }

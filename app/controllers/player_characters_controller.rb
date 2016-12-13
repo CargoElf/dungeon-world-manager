@@ -17,6 +17,7 @@ class PlayerCharactersController < ApplicationController
   def create
     @player_character = PlayerCharacter.new(player_character_params)
     add_moves
+    add_bonds
     if @player_character.save
       redirect_to @player_character
     else
@@ -35,13 +36,21 @@ class PlayerCharactersController < ApplicationController
   private
 
   def player_character_params
-    params.require(:player_character).permit(:name, :class, :level, :class_name, :hp_mod, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, race_attributes: [:name, :description], alignment_attributes: [:name, :description])
+    params.require(:player_character).permit(:name, :description, :class, :load_mod, :level, :class_name, :hp_mod, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, race_attributes: [:name, :description], alignment_attributes: [:name, :description])
   end
 
   def add_moves
     if params[:moves]
       params[:moves].each do |number, data|
         @player_character.moves << Move.new(name: data[:name], description: data[:description])
+      end
+    end
+  end
+
+  def add_bonds
+    if params[:bonds]
+      params[:bonds].each do |number, data|
+        @player_character.bonds << Bond.new(description: data[:description])
       end
     end
   end

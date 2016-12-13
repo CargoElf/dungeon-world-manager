@@ -13,6 +13,14 @@
 <%= "CHA: #{@player_character.charisma}" %>
 <%= @player_character.cha_mod %>
 
+<%= @player_character.class_name %>
+<% if @player_character.description %>
+  <%= @player_character.description %>
+<% end %>
+
+<%= @player_character.hit_points %>
+<%= @player_character.load %>
+
 <%= @player_character.race.name %>
 <%= @player_character.race.description %>
 <%= @player_character.alignment.name %>
@@ -25,6 +33,14 @@
     </li>
     <li>
       <%= move.description %>
+    </li>
+  </ul>
+<% end %>
+
+<% @player_character.bonds.each do |bond| %>
+  <ul>
+    <li>
+      <%= bond.description %>
     </li>
   </ul>
 <% end %>

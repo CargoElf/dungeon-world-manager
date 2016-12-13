@@ -72,7 +72,11 @@ RSpec.describe PlayerCharacter, type: :model do
   end
 
   describe "load" do
-
+    it "Adds load_mod and strength together" do
+      pc.strength = 10
+      pc.load_mod = 4
+      expect(pc.load).to eq 14
+    end
   end
 
 end
