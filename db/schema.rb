@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111152603) do
+ActiveRecord::Schema.define(version: 20161212214108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20161111152603) do
     t.integer  "alignment_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "load_mod"
     t.index ["alignment_id"], name: "index_player_characters_on_alignment_id", using: :btree
     t.index ["race_id"], name: "index_player_characters_on_race_id", using: :btree
   end

@@ -10,16 +10,22 @@
             <div class="input-field inline">
               <%= f.text_field :name, placeholder: "Character Name", class: "form-control" %>
             </div>
+            <%= f.label "Class"%>
+            <%= f.text_field :class_name, placeholder: "Class Name" %>
+
+            <%= f.label "Character Description" %>
+            <%= f.text_area :description, placeholder: "Enter a physical description of your character" %>
+
+            <%= f.label "HP Modifier" %>
+            <%= f.number_field :hp_mod, in: 4..10, step: 2 %>
+
+            <%= f.label "Load Modifier" %>
+            <%= f.number_field :load_mod, in: 6..10, step: 1, value: 6 %>
           </div>
-          <%= f.label "Class"%>
-          <%= f.text_field :class_name, placeholder: "Class Name" %>
 
-
-          <%= f.label "HP Modifier" %>
-          <%= f.number_field :hp_mod, in: 4..10, step: 2 %>
         </div>
 
-        <div class="row">
+        <div class="row stats">
 
           <div class="col s1">
             <%= f.label "STR" %>
@@ -36,10 +42,6 @@
             <%= f.number_field :constitution, in: 1..18, step: 1, value: 10 %>
           </div>
 
-        </div>
-
-        <div class="row">
-
           <div class="col s1">
             <%= f.label "INT" %>
             <%= f.number_field :intelligence, in: 1..18, step: 1, value: 10 %>
@@ -54,42 +56,78 @@
             <%= f.label "CHA" %>
             <%= f.number_field :charisma, in: 1..18, step: 1, value: 10 %>
           </div>
+        </div>
+
+        <div class="row">
+
 
         </div>
 
         <div class="row">
-          <%= f.fields_for :race do |t| %>
+          <div class="col s12">
+            <%= f.fields_for :race do |t| %>
             <%= t.label "Race" %>
             <%= t.text_field :name, placeholder: "Race Name" %>
             <%= t.label "Description" %>
             <%= t.text_area :description, placeholder: "Race Description", class: "form-control"%>
-          <% end %>
+            <% end %>
+
+          </div>
 
         </div>
 
         <div class="row">
-          <%= f.fields_for :alignment do |t| %>
+          <div class="col s12">
+            <%= f.fields_for :alignment do |t| %>
             <%= t.label "Alignment" %>
             <%= t.text_field :name, placeholder: "Alignment Name" %>
             <%= t.label "Description" %>
             <%= t.text_area :description, placeholder: "Alignment Description", class: "form-control"%>
-          <% end %>
+            <% end %>
+
+          </div>
 
         </div>
 
         <div class="row">
-          <div class="moves-input">
-            <input type="text" name="moves[1][name]" placeholder="Description Name" class="moves-name">
-            <input type="text-area" name="moves[1][description]" placeholder="Description of Move" class="moves-description">
+          <div class="col s12">
+            <div class="moves-input">
+              <input type="text" name="moves[1][name]" placeholder="Move Name" class="moves-name">
+              <textarea name="moves[1][description]" placeholder="Description of Move" class="moves-description form-control"></textarea>
+            </div>
           </div>
 
-          <div class="btn moves-button">
-            Add Move
+          <div class="col s12">
+            <div class="btn moves-button">
+              Add Move
+            </div>
           </div>
         </div>
 
-        <%= f.submit "Create Character", class: "btn" %>
-        <% end %>
+        <div class="row">
+          <div class="col s12">
+            <div class="bonds-input">
+              <% if params[:bonds] && params[:bonds][:"1"][:description] != "" %>
+                <% params[:bonds].each do |bond, description| %>
+                  <% if description[:description] != "" %>
+                    <textarea name=<%= "bonds[#{bond}][description]" %> class="bond-description form-control"><%= "#{description[:description]}" %></textarea>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <textarea name="bonds[1][description]" placeholder="Description of Bond" class="bond-description  form-control"></textarea>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col s12">
+            <div class="btn bonds-button">
+              Add Bond
+            </div>
+          </div>
+        </div>
+
+      <%= f.submit "Create Character", class: "btn" %>
+      <% end %>
 
       </div>
     </div>

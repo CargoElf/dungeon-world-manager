@@ -45,10 +45,11 @@ class PlayerCharacter < ApplicationRecord
   end
 
   def hit_points
-    self.constitution
+    self.constitution + self.hp_mod
   end
 
   def load
+    self.load_mod + self.strength
   end
 
   private
