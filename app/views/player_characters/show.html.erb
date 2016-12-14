@@ -1,4 +1,15 @@
-<%= @player_character.name %>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <h4>Character Name: <%= @player_character.name %></h4>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
 <%= "LVL: #{@player_character.level}" %>
 <%= "STR: #{@player_character.strength}" %>
 <%= @player_character.str_mod %>
