@@ -92,8 +92,12 @@
         <div class="row">
           <div class="col s12">
             <div class="moves-input">
-              <input type="text" name="moves[1][name]" placeholder="Move Name" class="moves-name">
-              <textarea name="moves[1][description]" placeholder="Description of Move" class="moves-description form-control"></textarea>
+              <% if params[:moves] && params[:moves][:"1"][:name] != "" && params[:moves][:"1"][:description] != ""%>
+                <% params[:moves].each do |move_num| %>
+              <% else %>
+                <input type="text" name="moves[1][name]" placeholder="Move Name" class="moves-name">
+                <textarea name="moves[1][description]" placeholder="Description of Move" class="moves-description form-control"></textarea>
+              <% end %>
             </div>
           </div>
 

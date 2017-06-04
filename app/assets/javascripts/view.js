@@ -1,4 +1,4 @@
-function addMove() {
+qfunction addMove() {
     var num = $(".moves-input").children().size() + 1;
     $(".moves-button").on("click", function () {
     	if ($(".moves-description").last().val() != "" && $(".moves-name").last().val() != ""){
@@ -13,7 +13,7 @@ function addBond() {
     $(".bonds-button").on("click", function () {
       if ($(".bond-description").last().val() != "") {
         $(".bonds-input").append("<textarea name=\"bonds[" + num + "][description]\" placeholder=\"Description of Bond\" class=\"bond-description form-control\"></textarea>");
-				num++
+		num++
       }
     })
 }
